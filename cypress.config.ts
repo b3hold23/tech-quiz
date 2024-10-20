@@ -5,7 +5,7 @@
     component: {
         devServer: {
             framework: "react",
-            bundler: "vite",
+            bundler: "webpack",
         },
         specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
         supportFile: 'cypress/support/component.ts',
@@ -15,7 +15,7 @@
         setupNodeEvents(on, config) {
             // implement node event listeners here
         },
-        baseUrl: "http://localhost:3000",
+        baseUrl: "http://localhost:3001",
         specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
         supportFile: 'cypress/support/e2e.ts',
     }

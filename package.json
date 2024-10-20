@@ -13,12 +13,16 @@
     "client:dev": "cd client && npm run dev",
     "build": "cd server && npm run build",
     "seed": "cd server && npm run seed",
-    "render-build": "npm install && npm run build"
+    "render-build": "npm install && npm run build",
+    "cypress": "npx cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/react": "^8.0.2",
+    "@cypress/webpack-dev-server": "^3.11.0",
+    "@cypress/webpack-preprocessor": "^6.0.2",
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@types/react": "^18.3.3",

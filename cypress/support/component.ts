@@ -1,6 +1,6 @@
 // Add global configurations or custom commands for component tests here
 import './commands'
-import { mount } from 'cypress/react';
+import { mount } from '@cypress/react';
 
 declare global {
     namespace Cypress {
@@ -10,4 +10,4 @@ declare global {
     }
 }
 
-Cypress.Commands.add('mount', { prevSubject: false }, mount);
+Cypress.Commands.add('mount', mount);
