@@ -1,0 +1,1 @@
+// Add global configurations or custom commands for E2E tests here
