@@ -28,8 +28,7 @@ describe('Quiz Functionality', () => {
   it('should complete the quiz and show the score when all questions are answered', () => {
     
     cy.contains('Start Quiz').click();
-  
-    
+   
     function answerNextQuestion() {
       
       cy.get('.card h2').should('exist');
@@ -47,12 +46,17 @@ describe('Quiz Functionality', () => {
       });
     }
   
-    
     answerNextQuestion();
   
-    
     cy.contains('Quiz Completed').should('exist');
     cy.get('.alert-success').should('contain', 'Your score');
+
+    cy.wait(5000);
+    cy.contains('Take New Quiz').click();
   });
-  
+
+  // it('should start a new quiz by clicking the "Take New Quiz" button', () => {
+  // })
+ 
 }); 
+4
