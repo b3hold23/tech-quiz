@@ -40,32 +40,28 @@ describe('<Quiz />', () => {
     cy.get('h2').should('not.be.empty');
   });
 
-  it('should display the next question when an answer is clicked', () => {
+  it('should display the next question until the quiz is over', () => {
+    // Define the number of questions in the quiz
+    const totalQuestions = 10; // Replace with the actual number of questions in your quiz
+  
     // Mount the Quiz component
     mount(<Quiz />);
-
+  
     // Start the quiz
     cy.get('button').contains('Start Quiz').click();
-
-    // Simulate answering the first question by clicking the first answer button
-    cy.get('button').contains('1').click();
-
-    // Ensure the next question is displayed
-    cy.get('h2').should('not.be.empty');
+  
+    // Loop through all the questions
+    for (let i = 0; i < totalQuestions; i++) {
+      // Simulate answering the question by clicking the first answer button
+      cy.get('button').contains('1').click();
+  
+      // Ensure the next question is displayed or the quiz ends
+      if (i < totalQuestions - 1) {
+        cy.get('h2').should('not.be.empty'); // Check if a new question is displayed
+      } else {
+        cy.get('h2').contains('Quiz Completed').should('be.visible'); // Check if the quiz completion message is displayed
+      }
+    }
   });
-
-  it('should display the quiz completion screen after all questions are answered', () => {
-    // Mount the Quiz component
-    mount(<Quiz />);
-
-    // Start the quiz
-    cy.get('button').contains('Start Quiz').click();
-
-    // Loop through all questions and answer them
-    cy.get('button').contains('1').click(); // Answer the first question
-    cy.get('button').contains('1').click(); // Answer the second question
-
-    // After answering all questions, check if the quiz completion message is displayed
-    cy.get('h2').contains('Quiz Completed').should('be.visible');
-  });
+  
 });
